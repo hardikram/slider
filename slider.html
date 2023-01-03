@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .conteiner{
+            height: 500px;
+            width: 1000px;
+            margin: 50px auto;
+            border: 1px solid;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px gray;
+
+        }
+        img{
+            width: 100%; 
+            position: absolute;
+            transition: 1s;
+        }
+        .nav{
+            text-align: center;
+            margin: 20px 0;
+        }
+        button{
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="conteiner">
+    
+    <img src="https://picsum.photos/id/137/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/237/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/337/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/437/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/537/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/637/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/737/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/837/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/888/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/439/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/457/1000/500" class="img" alt="">
+    <img src="https://picsum.photos/id/987/1000/500" class="img" alt="">
+
+    </div>
+    
+    <div class="nav">
+        <button onclick="goPrev()">
+            prev
+        </button>
+        <button onclick="gonext()">
+            next
+        </button>
+    </div>
+
+<script>
+const slide = document.querySelectorAll('.img')
+let count = 0
+
+slide.forEach(
+    (img,index) =>{img.style.left = `${index * 100}%`}
+)
+
+const slideImage =() =>{
+    slide.forEach(
+    (img) =>{img.style.transform = `translateX(-${count * 100}%)`}
+)  
+}
+
+const goPrev =() =>{
+    console.log(count)
+   
+    if(count == 0){
+        count = slide.length
+        slide.forEach(
+            (img)=>{img.style.transition=`${0}s`}
+        )
+    }
+    count--
+    slideImage()
+}
+const gonext =() =>{
+    console.log(count)
+    count++
+    if(count>slide.length-1){
+        count=0
+        slide.forEach(
+            (img)=>{img.style.transition=`${0}s`}
+        )
+       
+    }
+    else{
+        slide.forEach(
+            (img)=>{img.style.transition=`${1}s`}
+        ) 
+    }
+    slideImage()
+}
+</script>
+
+
+
+
+
+    <!-- <script>
+        const slide = document.querySelectorAll('.img')
+         console.log(slide) 
+        let cont = 0
+
+        slide.forEach(
+            (img,index) => {
+                img.style.left = `${index * 100}%`
+            }
+        )
+        const slideImage = () => {
+            slide.forEach(
+                (img) => {
+                    img.style.transform = `translateX(-${ cont * 100}%)`
+                }
+            )
+        }
+        const goPrev = () => {
+            cont--
+            slideImage()
+        }
+        const gonext = () => {
+            console.log(slide.length)
+            cont++ 
+            if(cont > slide.length-1){
+                cont=0
+            }
+            slideImage()
+        }
+
+        -->
+    <!-- </script> -->
+</body>
+</html>
